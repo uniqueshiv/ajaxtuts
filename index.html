@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ajax Testing</title>
+  </head>
+  <body>
+    <div class="" id="text">
+
+    </div>
+    <button type="button" name="button" id="button">Get Text file</button>
+  </body>
+  <script type="text/javascript">
+  // $(ducment).ready(function(){
+  // })
+      document.getElementById('button').addEventListener('click',loadtext);
+      function loadtext(){
+        // create xhr object
+        var xhr=new XMLHttpRequest();
+        //open- type,url/file,async
+        xhr.open('get','sample.txt',true);
+
+        console.log('READYSTATE'+xhr.readyState);
+
+
+        //onload is new and ronreadystatechange is old as well as
+        //readystate goes 1 and 4 in onload but 4 time in onreadystatechange
+
+        //optional - used for loaders
+        xhr.onprogress=function(){
+          console.log('ReadyState progress= ',xhr.readyState);
+        }
+
+        xhr.onload=function(){ // in this no need to check readystate
+            console.log('READYSTATE'+xhr.readyState);
+          if(this.status==200){
+            console.log(this.responseText);
+            document.getElementById('text').innerHTML=this.responseText;
+          }
+          else
+           if(this.status=404){
+            document.getElementById('text').innerHTML="Page not found!";
+          }
+        }
+
+        xhr.onerror=function(){
+          console.log('ReadyState error',xhr.readyState)
+        }
+        // xhr.onreadystatechange=function(){
+        //     console.log('READYSTATE'+xhr.readyState);
+        //   if(this.readyState==4 && this.status==200){
+        //   //  console.log(this.responseText);
+        //   }
+        // }
+
+        //onloadstart
+        // xhr.onloadstart=function(){
+        //   console.log('onloadstart')
+        // }
+        // send request
+        xhr.send();
+        console.log(xhr);
+      }
+
+      //readystate values in onreadystatechange
+      // 0:reqeust initialize
+      // 1:connection establish
+      // 2:request rececive
+      // 3:processing reqeust
+      // 4:request finished and response is ready
+
+  </script>
+</html>
