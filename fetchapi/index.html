@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ajax form Testing</title>
+
+  </head>
+  <body>
+    <div id="authors"></div>
+  <button id="gettext">Get text</button>
+
+  </body>
+  <script type="text/javascript">
+      const ul=document.getElementById('authors');
+      const url="https://randomuser.me/api/?results=10";
+      document.getElementById('gettext').addEventListener('click',gettext);
+      function gettext(){
+      fetch(url)
+        .then(function(data){
+          console.log(data);
+        })
+        .catch(function(err)=>console.log(err));
+        // fetch('sample.txt')
+        //   .then(function(res){
+        //     return res.text();
+        //   })
+        //   .then(function(data){
+        //     console.log(data);
+        //   })
+
+        // fetch('sample.txt')
+        //   .then((res)=>res.text())
+        //   //.then((data)=>console.log(data))
+        //   .then((data)=>{
+        //       document.getElementById('content').innerHTML=data;
+        //   })
+        //   .catch((error)=>console.log(error))
+
+        // fetch('sample.txt')
+        //     .then(function(res){
+        //       console.log(res);
+        //     })
+        //     .catch(function(error){
+        //       console.log(error)
+        //     })
+
+      }
+  </script>
+</html>

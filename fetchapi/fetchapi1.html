@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ajax form Testing</title>
+
+  </head>
+  <body>
+    <div id="authors"></div>
+  <button id="gettext">Get Authors</button>
+
+  </body>
+  <script type="text/javascript">
+    document.getElementById('gettext').addEventListener('click',getAuthers);
+
+    function createNode(element){
+      return document.createElement(element);
+    }
+    function append(parent,el){
+      return parent.appendChild(el);
+    }
+    function getAuthers(){
+      const ul=document.getElementById('authors');
+      const url='https://randomuser.me/api/?results=10';
+      fetch(url)
+        .then((data)=>data.json())
+        .then(function(data){
+          let authors = data.results;
+          return authors.map(function(author){
+            let li=createNode('li'),
+                img=createNode('img'),
+                span=createNode('span');
+            img.src=author.picture.medium;
+            span.innerHTML=`${author.name.first} ${author.nname.last}`;
+            append(li,img);
+            append(li,span);
+            append(ul,li);
+          })
+
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+      }
+  </script>
+</html>
