@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ajax API</title>
+  </head>
+  <body>
+    <div class="" id="text">
+
+    </div>
+    <button type="button" name="button" id="button">Load github user</button>
+    <br><br>
+
+
+    <h1>Github Users</h1>
+    <div class="" id="users">
+
+    </div>
+  </body>
+  <script type="text/javascript">
+     document.getElementById('button').addEventListener('click',gitusers);
+     function gitusers(){
+       var xhr=new XMLHttpRequest();
+       xhr.open('GET','https://api.github.com/users?since=XXX',true);
+       xhr.onload=function(){
+         if(this.status==200){
+           console.log(this.responseText);
+         }
+       }
+       xhr.open();
+     }
+  </script>
+</html>

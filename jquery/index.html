@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jquery Tutorial</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style media="screen">
+      ul li{
+        display:inline-block;
+        padding:5px 10px;
+        list-style:none;
+      }
+      .tab-container .panel-group{
+        display:none;
+      }
+      .tab-container .panel-group.active{
+        display:block;
+      }
+</style>
+   </head>
+  <body>
+
+    <div class="container">
+  <div class="tab-container">
+     <ul>
+       <li data-tab="panel1" class="active">Panel1</li>
+       <li data-tab="panel2">Panel1</li>
+       <li data-tab="panel3">Panel1</li>
+       <li data-tab="panel4">Panel1</li>
+     </ul>
+
+       <div class="panel-group active" id='panel1'>
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel One</div>
+          <div class="panel-body">Panel one  Content</div>
+        </div>
+      </div>
+      <div class="panel-group" id='panel2'>
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel 2</div>
+          <div class="panel-body">Panel Content</div>
+        </div>
+      </div>
+      <div class="panel-group" id='panel3'>
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel 3</div>
+          <div class="panel-body">Panel Content</div>
+        </div>
+      </div>
+      <div class="panel-group" id='panel4'>
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel 4</div>
+          <div class="panel-body">Panel Content</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-container">
+       <ul>
+         <li data-tab="panel5" class="active">Panel1</li>
+         <li data-tab="panel6">Panel1</li>
+         <li data-tab="panel7">Panel1</li>
+         <li data-tab="panel8">Panel1</li>
+       </ul>
+
+         <div class="panel-group active" id='panel5'>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel One</div>
+            <div class="panel-body">Panel one  Content</div>
+          </div>
+        </div>
+        <div class="panel-group" id='panel6'>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel 2</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
+        </div>
+        <div class="panel-group" id='panel7'>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel 3</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
+        </div>
+        <div class="panel-group" id='panel8'>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel 4</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  $(function(){
+        $('.tab-container li').on('click',function(){
+          var panel=$(this).closest('.tab-container');
+          panel.find('li.active').removeClass('active');
+          $(this).addClass('active');
+          let tabid=$(this).attr('data-tab');
+          //  $('#'+tabid).addClass('active');
+          panel.find('.panel-group.active').slideUp('300',nextpanelshow);
+            //console.log($(this));
+            // $(this).removeClass('active');
+            // $('#'+tabid).slideDown(300,function(){
+            //   $(this).addClass('active');
+            // })
+            function nextpanelshow(){
+              $(this).removeClass('active');
+              $('#'+tabid).slideDown(300,function(){
+                $(this).addClass('active');
+              });
+            }
+
+        })
+  });
+  </script>
+</html>

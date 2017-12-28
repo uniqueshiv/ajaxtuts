@@ -30,7 +30,7 @@
       xhr.onload=function(){
         if(this.status==200){
           var user=JSON.parse(this.responseText);
-            var output='';
+          var output='';
             output+='<ul>'+
             '<li>ID:'+user.id+'</li>'+
             '<li>Name:'+user.name+'</li>'+
